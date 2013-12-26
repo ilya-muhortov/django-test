@@ -1,0 +1,4 @@
+
+mysql-python
+django
+souths
