@@ -1,0 +1,17 @@
+
+table {
+    border-spacing: 0px;
+    border: 0px none gray;
+    border-collapse: separate;
+	background-color: white;
+}
+table th {
+    padding: 3px;
+    border: 1px inset gray;
+    background-color: white;
+}
+table td {
+    padding: 3px;
+    border: 1px inset gray;
+    background-color: white;
+}
