@@ -71,7 +71,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
@@ -90,3 +90,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "project/static"),
 )
+
+DATE_INPUT_FORMATS = ('%d.%m.%Y',)
+DATE_FORMAT = 'd.m.Y'
+
+FORMAT_MODULE_PATH = 'project.formats'
+
+import locale
+locale.setlocale(locale.LC_TIME, 'ru_RU')

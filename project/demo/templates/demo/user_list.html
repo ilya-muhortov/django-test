@@ -4,26 +4,30 @@
 
 <h1>Пользователи</h1>
 
+
+
+{% verbatim %}
+<script type="text/x-tmpl" id="table-data">
 <table>
     <thead>
         <tr>
-            <th>id</th>
-            <th>Имя</th>
-            <th>Зарплата</th>
-            <th>Дата поступления на работу</th>
+            {% for (var i=0; i<o.fields.length; i++) { %}
+                <th>{%=o.fields[i][1]%}</th>
+            {% } %}
         </tr>
     </thead>
     <tbody>
-        {% for user in object_list %}
-        <tr>
-            <td>{{ user.pk }}</td>
-            <td><div class="edit-text" data-field="name" data-pk="{{ user.pk }}">{{ user.name }}</div></td>
-            <td><div class="edit-textarea" data-field="paycheck" data-pk="{{ user.pk }}">{{ user.paycheck }}</div></td>
-            <td>{{ user.date_joined }}</td>
-        </tr>
-        {% endfor %}
+        {% for (var i=0; i<o.object_list.length; i++) { %}
+            <tr>
+                {% for (var j=0; j<o.object_list[i].length; j++) { %}
+                <td>{%=o.object_list[i][j]%}</td>
+                {% } %}
+            </tr>
+        {% } %}
     </tbody>
 </table>
+</script>
+{% endverbatim %}
 
 <form method="POST" action=".">
 {% csrf_token %}

@@ -4,13 +4,53 @@
     <title>{% block page_title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}style.css">
+    <link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}jquery-ui/css/smoothness/jquery-ui-1.10.3.custom.min.css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}jquery-2.0.3.min.js"></script>
     <script src="{{ STATIC_URL }}jquery.jeditable.js"></script>
+    <script src="{{ STATIC_URL }}jquery.jeditable.datepicker.js"></script>
+    <script src="{{ STATIC_URL }}jquery-ui/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script src="{{ STATIC_URL }}tmpl.min.js"></script>
+    <script src="{{ STATIC_URL }}jquery.cookie.js"></script>
     <script src="{{ STATIC_URL }}demo.js"></script>
     {% block js %}{% endblock %}
 </head>
 <body>
+<div>
+    Админка: <a href="{% url 'admin:demo_demouser_changelist' %}">Пользователи</a> <a href="{% url 'admin:demo_room_changelist' %}">Комнаты</a>
+    <br/>&nbsp;
+</div>
+<div class="sidebar">
+    <a href="{% url 'demo:user-list' %}">Пользователи</a><br/>
+    <a href="{% url 'demo:room-list' %}">Комнаты</a>
+</div>
+<div class="content" id="content">
 {% block content %}{% endblock %}
+</div>
+
+{% verbatim %}
+<script type="text/x-tmpl" id="table-data">
+<table>
+    <thead>
+        <tr>
+            {% for (var i=0; i<o.fields.length; i++) { %}
+                <th>{%=o.fields[i][1]%}</th>
+            {% } %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for (var i=0; i<o.object_list.length; i++) { %}
+            <tr>
+                {% for (var j=0; j<o.object_list[i].length; j++) { %}
+                <td><div class="edit-field" data-type="{%=o.fields[j][2]%}" data-field="{%=o.fields[j][0]%}" data-pk="{%=o.object_list[i][0]%}">{%=o.object_list[i][j]%}</div></td>
+                {% } %}
+            </tr>
+        {% } %}
+    </tbody>
+</table>
+</script>
+{% endverbatim %}
+
 </body>
 </html>

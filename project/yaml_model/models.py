@@ -31,12 +31,8 @@ class YAMLModelBase(ModelBase):
         module_dir = path.dirname(path.realpath(sys.modules[cls.__module__].__file__))
         try:
             stream = file('%s/models.yaml' % module_dir, 'r')
-        except IOError as e:
-            raise e
-
-        try:
             yaml_data = yaml.load(stream)
-        except yaml.YAMLError as e:
+        except (IOError, yaml.YAMLError) as e:
             raise e
 
         schema_name = getattr(meta, 'schema_name', None)

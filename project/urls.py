@@ -5,7 +5,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^demo/', include('project.demo.urls')),
+    url(r'^demo/', include('project.demo.urls', namespace='demo')),
 )
 
 if settings.DEBUG is True:

@@ -25,7 +25,7 @@ class YAMLField(object):
     def char_field(self):
         defaults = {
             'max_length': 255,
-            'null': False,
+            'null': True,
             'blank': False,
             'verbose_name': self.title
         }
@@ -33,7 +33,7 @@ class YAMLField(object):
 
     def int_field(self):
         defaults = {
-            'null': False,
+            'null': True,
             'blank': False,
             'verbose_name': self.title
         }
@@ -41,7 +41,7 @@ class YAMLField(object):
 
     def date_field(self):
         defaults = {
-            'null': False,
+            'null': True,
             'blank': False,
             'verbose_name': self.title
         }

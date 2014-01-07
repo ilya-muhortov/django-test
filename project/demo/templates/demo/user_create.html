@@ -1,0 +1,11 @@
+{% extends "page.html" %}
+
+{% block content %}
+
+<h1>Новый пользователь</h1>
+<form method="POST" action=".">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+{% endblock %}

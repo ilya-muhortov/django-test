@@ -1,0 +1,6 @@
+test_model:
+  title: Тестовая модель
+  fields:
+    - {id: name, title: Имя, type: char}
+    - {id: paycheck, title: Зарплата, type: int}
+    - {id: date_joined, title: Создан, type: date}
