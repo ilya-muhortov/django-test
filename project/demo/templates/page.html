@@ -17,6 +17,7 @@
     {% block js %}{% endblock %}
 </head>
 <body>
+{% csrf_token %}
 <div>
     Админка: <a href="{% url 'admin:demo_demouser_changelist' %}">Пользователи</a> <a href="{% url 'admin:demo_room_changelist' %}">Комнаты</a>
     <br/>&nbsp;
